@@ -131,7 +131,9 @@ nav {
   padding: 2.25rem 4rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #fff;
+  background-color: #0a0a0a;
+  color: #fff;
 }
 
 .movements__type {
