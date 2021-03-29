@@ -126,7 +126,7 @@ const calcDisplaySummary = function (acc) {
   labelSumInterest.textContent = `${interest}€`;
 };
 
-// Event handler
+// Event handlers
 let currentAccount;
 
 btnLogin.addEventListener('click', function (event) {
@@ -169,4 +169,22 @@ btnTransfer.addEventListener('click', function (event) {
       // update UI
       updateUI(currentAccount);
   }
+});
+
+btnClose.addEventListener('click', function (event) {
+event.preventDefault(); // will not reload the page
+
+if (
+  inputCloseUsername.value === currentAccount.username && 
+  Number(inputClosePin.value) === currentAccount.pin) {
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+
+    // delete account (splice mutates array, removes exactly 1 element)
+    accounts.splice(index, 1);
+
+    // hide Ui
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
 });
