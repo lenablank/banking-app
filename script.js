@@ -199,14 +199,14 @@ btnLogin.addEventListener('click', function (event) {
 // log out
 
 const startLogOutTimer = function () {
-  // set time to 5 minutes
+  // set time 
   let time = 1200;
   // call the timer every sec
   setInterval(function() {
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
     const sec = String(time % 60).padStart(2, 0);
     // in each call print the remaining time
-    labelTimer.textContent = `${min}:${sec}`;
+    labelTimer.textContent = `You will be logged out in ${min}:${sec}`;
     //decrese timer 1 sec every sec
     time--;
     // when 0 stop timer
