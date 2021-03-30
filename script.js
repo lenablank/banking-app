@@ -5,6 +5,7 @@ const account1 = {
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
+
   movementsDates: [
     '2019-11-18T21:31:17.178Z',
     '2019-12-23T07:42:02.383Z',
@@ -24,6 +25,7 @@ const account2 = {
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
+
   movementsDates: [
     '2019-11-01T13:15:33.035Z',
     '2019-11-30T09:48:16.867Z',
@@ -154,8 +156,22 @@ const calcDisplaySummary = function (acc) {
   labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
-// Event handlers
+// event handlers
 let currentAccount;
+
+// fake always logged in
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
 btnLogin.addEventListener('click', function (event) {
   event.preventDefault();
