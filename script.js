@@ -206,7 +206,7 @@ const startLogOutTimer = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
     const sec = String(time % 60).padStart(2, 0);
     // in each call print the remaining time
-    labelTimer.textContent = `You will be logged out in ${min}:${sec}`;
+    labelTimer.textContent = `${min}:${sec}`;
     //decrese timer 1 sec every sec
     time--;
     // when 0 stop timer
