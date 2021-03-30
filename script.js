@@ -168,8 +168,8 @@ const now = new Date();
 const day = `${now.getDate()}`.padStart(2, 0);
 const month = `${now.getMonth() + 1}`.padStart(2, 0);
 const year = now.getFullYear();
-const hour = now.getHours();
-const min = now.getMinutes();
+const hour = `${now.getHours()}`.padStart(2, 0);
+const min = `${now.getMinutes()}`.padStart(2, 0);
 
 labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
@@ -189,10 +189,34 @@ btnLogin.addEventListener('click', function (event) {
     // field loses it's focus
     inputLoginPin.blur(); 
 
+    startLogOutTimer();
+
     // update UI
     updateUI(currentAccount);
   }
 });
+
+// log out
+
+const startLogOutTimer = function () {
+  // set time to 5 minutes
+  let time = 1200;
+  // call the timer every sec
+  setInterval(function() {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    // in each call print the remaining time
+    labelTimer.textContent = `${min}:${sec}`;
+    //decrese timer 1 sec every sec
+    time--;
+    // when 0 stop timer
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+    }, 1000);
+};
 
 btnTransfer.addEventListener('click', function (event) {
   event.preventDefault();
